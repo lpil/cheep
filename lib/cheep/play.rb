@@ -2,9 +2,9 @@ require 'wavefile'
 
 #
 module Cheep
-  def self.play(samples, sample_rate = 44_100, filename = 'cheep.wav')
-    writer_format = WaveFile::Format.new :mono, :pcm_16, sample_rate
-    buffer_format = WaveFile::Format.new :mono, :float,  sample_rate
+  def self.play(samples, filename = 'cheep.wav')
+    writer_format = WaveFile::Format.new :mono, :pcm_16, SAMPLE_RATE
+    buffer_format = WaveFile::Format.new :mono, :float,  SAMPLE_RATE
 
     WaveFile::Writer.new filename, writer_format do |writer|
       writer.write(WaveFile::Buffer.new samples, buffer_format)
