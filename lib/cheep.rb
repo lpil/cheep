@@ -10,5 +10,3 @@ end
 SAMPLE_RATE = 44_100
 
 puts 'Cheep cheep!'
-
-require 'pry'; binding.pry
