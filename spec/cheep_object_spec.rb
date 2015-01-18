@@ -21,4 +21,13 @@ describe Cheep::Object do
       expect(Cheep.foo.num).to eq(num)
     end
   end
+
+  describe 'to_patch' do
+    it 'returns a hash with num as the key and the string as the value' do
+      obj = Cheep.print 'Hello'
+      expect(obj.to_patch).to match(
+        obj.num => /\A#X obj \d+ \d+ print Hello\z/
+      )
+    end
+  end
 end

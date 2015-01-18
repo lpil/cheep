@@ -22,9 +22,14 @@ describe Cheep do
     end
   end
 
-  describe ':[] syntax' do
-    it 'creates a PureDataObject' do
+  describe ':[] syntax for object creation' do
+    it 'returns a Cheep::Object' do
       expect(Cheep[:print].class).to eq(Cheep::Object)
+    end
+
+    it 'adds the Object to the @@objects array' do
+      obj = Cheep.pow
+      expect(Cheep.class_eval('@@objects').last).to eq(obj)
     end
   end
 end
