@@ -5,7 +5,11 @@ def reset_patch
 end
 
 def test_patch(patch, patch_patterns)
-  patch.split("\n").zip(patch_patterns).each do |line, pattern|
+  lines = patch.split "\n"
+
+  expect(lines.size).to eq(patch_patterns.size)
+
+  lines.zip(patch_patterns).each do |line, pattern|
     expect(line).to match(/\A#{pattern}\z/)
   end
 end
