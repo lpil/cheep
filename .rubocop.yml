@@ -12,3 +12,6 @@ Documentation:
 
 DoubleNegation:
   Enabled: false
+
+ClassAndModuleChildren:
+  EnforcedStyle: compact

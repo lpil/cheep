@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'blankslate'
-# require 'yaml'
-
-# methods = YAML.load_file 'resource/pd_objects.yml'
 
 class Cheep < BlankSlate
   @@objects = []
@@ -14,13 +11,20 @@ class Cheep < BlankSlate
 
   def self.[](name, *args)
     name = name.to_sym
-    PureDataObject.new name, *args
+    object = Cheep::Object.new name, @@objects.size, *args
+    @@objects << object
+    object
   end
 end
 
-class PureDataObject
-  def initialize(name, *args)
+class Cheep::Object
+  def initialize(name, num, *args)
     @name = name
     @args = args
+    @num = num
+  end
+
+  def to_patch
+    { @num => "#X obj 0 0 #{@name} #{@args.join ' ' }" }
   end
 end

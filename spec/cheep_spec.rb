@@ -24,7 +24,7 @@ describe Cheep do
 
   describe ':[] syntax' do
     it 'creates a PureDataObject' do
-      expect(Cheep[:print].class).to eq(PureDataObject)
+      expect(Cheep[:print].class).to eq(Cheep::Object)
     end
   end
 end
