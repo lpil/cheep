@@ -6,12 +6,13 @@ require 'blankslate'
 # methods = YAML.load_file 'resource/pd_objects.yml'
 
 class Cheep < BlankSlate
-  def method_missing(name, *args)
-    puts name
-    puts args
+  def self.method_missing(name, *args)
+    self[name, *args]
   end
 
-  def [](name, *args)
-    __send__ name.to_sym, *args
+  def self.[](name, *args)
+    name = name.to_sym
+    puts name
+    puts args
   end
 end
