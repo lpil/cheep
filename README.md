@@ -1,7 +1,7 @@
 # Cheep
 
-[Pure Data](http://puredata.info/) is cool, but graphical programming really is
-not fun, so here's a Ruby DSL for writing Pure Data patches.
+Graphical programming isn't fun, so here's a Ruby DSL for writing
+[Pure Data](http://puredata.info/) patches.
 
 
 ### Licence
