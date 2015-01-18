@@ -3,6 +3,10 @@
 Graphical programming isn't fun, so here's a Ruby DSL for writing
 [Pure Data](http://puredata.info/) patches.
 
+# Usage
+
+Ruby doesn't really like `~` in identifiers, so signal effecting objects use
+`!` as a prefix. `dac~` becomes `dac!`
 
 ### Licence
 

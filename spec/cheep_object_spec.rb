@@ -29,5 +29,9 @@ describe Cheep::Object do
         obj.num => /\A#X obj \d+ \d+ print Hello\z/
       )
     end
+
+    it 'replaces ! for ~ in the name' do
+      expect(Cheep.dac!.to_patch.values.first).to match(/dac~/)
+    end
   end
 end

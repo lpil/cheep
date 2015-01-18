@@ -27,6 +27,7 @@ class Cheep::Object
   end
 
   def to_patch
-    { @num => "#X obj 0 0 #{@name} #{@args.join ' ' }" }
+    name = @name.to_s.sub '!', '~'
+    { @num => "#X obj 0 0 #{name} #{@args.join ' ' }" }
   end
 end
