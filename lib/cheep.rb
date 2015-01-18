@@ -15,6 +15,13 @@ class Cheep < BlankSlate
     @@objects << object
     object
   end
+
+  def self.to_patch
+    @@objects.each_with_object('#N canvas 400 400 400 400 10;') do |obj, patch|
+      patch << "\n"
+      patch << obj.to_patch.values.first
+    end
+  end
 end
 
 require_relative 'object'

@@ -9,6 +9,6 @@ class Cheep::Object
 
   def to_patch
     name = @name.to_s.sub '!', '~'
-    { @num => "#X obj 0 0 #{name} #{@args.join ' ' }" }
+    { @num => "#X obj 0 0 #{name} #{@args.join ' ' }".strip << ';' }
   end
 end

@@ -6,7 +6,10 @@ Graphical programming isn't fun, so here's a Ruby DSL for writing
 # Usage
 
 Ruby doesn't really like `~` in identifiers, so signal effecting objects use
-`!` as a prefix. `dac~` becomes `dac!`
+`!` as a prefix.
+
+`dac~` becomes `dac!`.  
+`osc~` becomes `osc!`.
 
 ### Licence
 

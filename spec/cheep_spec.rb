@@ -32,4 +32,29 @@ describe Cheep do
       expect(Cheep.class_eval('@@objects').last).to eq(obj)
     end
   end
+
+  describe 'to_patch' do
+    before(:each) { reset_patch }
+
+    it 'starts with the canvas declaration' do
+      Cheep.osc! 440
+      Cheep.dac!
+
+      expect(Cheep.to_patch).to match(/\A#N canvas \d+ \d+ \d+ \d+ \d+;$/)
+    end
+
+    it 'Adds the objects' do
+      Cheep.osc! 440
+      Cheep.dac!
+      patch = Cheep.to_patch
+
+      patch_patterns = [
+        /#N canvas \d+ \d+ \d+ \d+ \d+;/,
+        /#X obj \d+ \d+ osc~ 440;/,
+        /#X obj \d+ \d+ dac~;/
+      ]
+
+      test_patch patch, patch_patterns
+    end
+  end
 end
