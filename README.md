@@ -3,6 +3,16 @@
 Graphical programming isn't fun, so here's a Ruby DSL for writing
 [Pure Data](http://puredata.info/) patches.
 
+~~~ruby
+osc = Cheep.osc! 440
+dac = Cheep.dac!
+dac[osc, osc]
+~~~
+
+Compiles to...
+
+![compiled patch](https://raw.githubusercontent.com/lpil/cheep/master/resource/intro-example.png)
+
 # Usage
 
 Ruby doesn't really like `~` in identifiers, so signal effecting objects use
