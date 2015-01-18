@@ -1,0 +1,14 @@
+ClassVars:
+  Description: 'Avoid the use of class variables.'
+  Enabled: false
+
+EmptyLines:
+  Description: "Don't use several empty lines in a row."
+  Enabled: false
+
+Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+DoubleNegation:
+  Enabled: false
