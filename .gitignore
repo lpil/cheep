@@ -1,3 +1,4 @@
 *.gem
 *.wav
 *.pd
+!resource/*.pd
