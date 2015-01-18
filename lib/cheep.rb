@@ -18,6 +18,8 @@ class Cheep < BlankSlate
 end
 
 class Cheep::Object
+  attr_reader :name, :num
+
   def initialize(name, num, *args)
     @name = name
     @args = args
