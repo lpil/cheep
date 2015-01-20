@@ -27,14 +27,30 @@ class Cheep < BlankSlate
 
     # Connections
     # i.e. #X connect 1 0 1 0;
-    @@objects.each do |obj|
-      obj.ins.each.with_index do |sender, r_i|
-        patch << "#X connect #{sender.num} 0 #{obj.num} #{r_i};"
-      end
-    end
+    patch = resolve_connections(@@objects, patch)
 
     patch.join "\n"
   end
+
+  def self.resolve_connections(objects, patch)
+    objects.each do |obj|
+      obj.ins.each.with_index do |sender_or_senders, sender_input|
+        if sender_or_senders.class == Array
+          sender_or_senders.each do |sender|
+            patch << connection(sender, obj, sender_input)
+          end
+        else
+          patch << connection(sender_or_senders, obj, r_i)
+        end
+      end
+    end
+  end
+
+  def self.connection(sender, reciever, sender_input)
+    "#X connect #{sender.num} 0 #{reciever.num} #{sender_input};"
+  end
+
+  private_class_method :connection, :resolve_connections
 end
 
 require_relative 'object'
