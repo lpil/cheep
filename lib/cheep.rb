@@ -27,12 +27,13 @@ class Cheep < BlankSlate
 
     # Connections
     # i.e. #X connect 1 0 1 0;
-    patch = resolve_connections(@@objects, patch)
+    patch << resolve_connections(@@objects, patch)
 
-    patch.join "\n"
+    patch.flatten.join "\n"
   end
 
   def self.resolve_connections(objects, patch)
+    patch = []
     objects.each do |obj|
       obj.ins.each.with_index do |sender_or_senders, sender_input|
         if sender_or_senders.class == Array
@@ -40,10 +41,11 @@ class Cheep < BlankSlate
             patch << connection(sender, obj, sender_input)
           end
         else
-          patch << connection(sender_or_senders, obj, r_i)
+          patch << connection(sender_or_senders, obj, sender_input)
         end
       end
     end
+    patch
   end
 
   def self.connection(sender, reciever, sender_input)
