@@ -16,7 +16,7 @@ Compiles to...
 # Usage
 
 Ruby doesn't really like `~` in identifiers, so signal effecting objects use
-`!` as a prefix.
+`!` as a suffix.
 
 `dac~` becomes `dac!`.  
 `osc~` becomes `osc!`.
