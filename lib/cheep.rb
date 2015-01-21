@@ -27,12 +27,12 @@ class Cheep < BlankSlate
 
     # Connections
     # i.e. #X connect 1 0 1 0;
-    patch << resolve_connections(@@objects, patch)
+    patch << resolve_connections(@@objects)
 
     patch.flatten.join "\n"
   end
 
-  def self.resolve_connections(objects, patch)
+  def self.resolve_connections(objects)
     patch = []
     objects.each do |obj|
       obj.ins.each.with_index do |sender_or_senders, sender_input|
