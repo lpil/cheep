@@ -1,10 +1,12 @@
+ClassAndModuleChildren:
+  EnforcedStyle: compact
+
 ClassVars:
   Description: 'Avoid the use of class variables.'
   Enabled: false
 
-EmptyLines:
-  Description: "Don't use several empty lines in a row."
-  Enabled: false
+ClassAndModuleChildren:
+  EnforcedStyle: compact
 
 Documentation:
   Description: 'Document classes and non-namespace modules.'
@@ -13,11 +15,15 @@ Documentation:
 DoubleNegation:
   Enabled: false
 
-ClassAndModuleChildren:
-  EnforcedStyle: compact
+EmptyLines:
+  Description: "Don't use several empty lines in a row."
+  Enabled: false
 
 Metrics/LineLength:
   Max: 120
+
+Metrics/MethodLength:
+  Max: 20
 
 Style/ColonMethodCall:
   Description: 'Do not use :: for method call.'
@@ -26,30 +32,3 @@ Style/ColonMethodCall:
 
 Style/EmptyLines:
   Enabled: false
-
-Documentation:
-  Enabled: false
-
-DoubleNegation:
-  Enabled: false
-
-ClassVars:
-  Description: 'Avoid the use of class variables.'
-  Enabled: false
-
-EmptyLines:
-  Description: "Don't use several empty lines in a row."
-  Enabled: false
-
-Documentation:
-  Description: 'Document classes and non-namespace modules.'
-  Enabled: false
-
-DoubleNegation:
-  Enabled: false
-
-ClassAndModuleChildren:
-  EnforcedStyle: compact
-
-Metrics/MethodLength:
-  Max: 20

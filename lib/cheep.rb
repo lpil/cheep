@@ -16,43 +16,28 @@ class Cheep < BlankSlate
     object
   end
 
+  def self.objects
+    @@objects
+  end
+
   def self.to_patch
     patch = ['#N canvas 400 400 400 400 10;']
 
     # Objects
     # i.e. #X obj 97 131 print;
-    @@objects.each do |obj|
+    objects.each do |obj|
       patch << obj.to_patch.values.first
     end
 
     # Connections
     # i.e. #X connect 1 0 1 0;
-    patch << resolve_connections(@@objects)
+    patch << Connector.new(objects).resolve_connections
 
     patch.flatten.join "\n"
   end
 
-  def self.resolve_connections(objects)
-    patch = []
-    objects.each do |obj|
-      obj.ins.each.with_index do |sender_or_senders, sender_input|
-        if sender_or_senders.class == Array
-          sender_or_senders.each do |sender|
-            patch << connection(sender, obj, sender_input)
-          end
-        else
-          patch << connection(sender_or_senders, obj, sender_input)
-        end
-      end
-    end
-    patch
-  end
-
-  def self.connection(sender, reciever, sender_input)
-    "#X connect #{sender.num} 0 #{reciever.num} #{sender_input};"
-  end
-
-  private_class_method :connection, :resolve_connections
+  private_class_method :objects
 end
 
 require_relative 'object'
+require_relative 'connector'
