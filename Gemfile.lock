@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    cheep (0.0.5)
+      blankslate
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,7 +47,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blankslate
+  cheep!
   pry
   rspec (~> 3.1.0)
   rubocop
