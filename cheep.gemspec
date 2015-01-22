@@ -5,7 +5,7 @@ DESCRIPTION
 
 Gem::Specification.new do |gem|
   gem.name        = 'cheep'
-  gem.version     = '0.0.5'
+  gem.version     = '0.0.6'
   gem.summary     = 'Making noise.'
   gem.description = description
   gem.summary     = 'A Ruby DSL for writing Pure Data patches'
