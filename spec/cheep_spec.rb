@@ -57,40 +57,16 @@ describe Cheep do
       test_patch patch, patch_patterns
     end
 
-    it 'adds the connections' do
+    it 'calls Cheep::Connector.new with objects' do
       osc = Cheep.osc! 440
       dac = Cheep.dac!
       dac[osc, osc]
-      patch = Cheep.to_patch
 
-      patch_patterns = [
-        /#N canvas \d+ \d+ \d+ \d+ \d+;/,
-        /#X obj \d+ \d+ osc~ 440;/,
-        /#X obj \d+ \d+ dac~;/,
-        /#X connect 0 0 1 0;/,
-        /#X connect 0 0 1 1;/
-      ]
+      expect(Cheep::Connector).to receive(:new)
+        .with(Cheep.instance_eval 'objects')
+        .and_call_original
 
-      test_patch patch, patch_patterns
-    end
-
-    it 'allows multiple objects to be connected to one input' do
-      osc1 = Cheep.osc! 440
-      osc2 = Cheep.osc! 220
-      dac = Cheep.dac!
-      dac[[osc1, osc2]]
-      patch = Cheep.to_patch
-
-      patch_patterns = [
-        /#N canvas \d+ \d+ \d+ \d+ \d+;/,
-        /#X obj \d+ \d+ osc~ 440;/,
-        /#X obj \d+ \d+ osc~ 220;/,
-        /#X obj \d+ \d+ dac~;/,
-        /#X connect 0 0 2 0;/,
-        /#X connect 1 0 2 0;/
-      ]
-
-      test_patch patch, patch_patterns
+      Cheep.to_patch
     end
   end
 end

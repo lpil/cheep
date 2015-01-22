@@ -17,7 +17,7 @@ describe Cheep::Object do
     end
 
     it 'assigned the Cheep object number to @num' do
-      num = Cheep.class_eval '@@objects.size'
+      num = Cheep.class_eval('objects').size
       expect(Cheep.foo.num).to eq(num)
     end
   end
