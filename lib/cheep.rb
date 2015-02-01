@@ -27,9 +27,7 @@ class Cheep < BlankSlate
 
     # Objects
     # i.e. #X obj 97 131 print;
-    objects.each do |obj|
-      patch << obj.to_patch.values.first
-    end
+    add_objects patch
 
     # Connections
     # i.e. #X connect 1 0 1 0;
@@ -38,7 +36,14 @@ class Cheep < BlankSlate
     patch.flatten.join "\n"
   end
 
-  private_class_method :objects
+  def self.add_objects(patch)
+    objects.each do |obj|
+      patch << obj.to_patch.values.first
+    end
+    patch
+  end
+
+  private_class_method :objects, :add_objects
 end
 
 require_relative 'object'

@@ -68,7 +68,7 @@ describe Cheep::Object do
 
 
 
-  describe 'Cheep::Object#ensure_collection' do
+  describe '#ensure_collection' do
     it 'does not modify arrays' do
       arr = Array.new(10) { rand 100 }
 

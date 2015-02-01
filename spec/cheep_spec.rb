@@ -26,7 +26,9 @@ describe Cheep do
     end
   end
 
-  describe ':[] syntax for object creation' do
+
+
+  describe '#:[] syntax for object creation' do
     it 'returns a Cheep::Object' do
       expect(Cheep[:print].class).to eq(Cheep::Object)
     end
@@ -37,7 +39,9 @@ describe Cheep do
     end
   end
 
-  describe 'to_patch' do
+
+
+  describe '#to_patch' do
     before(:each) { reset_patch }
 
     it 'starts with the canvas declaration' do
@@ -71,6 +75,27 @@ describe Cheep do
         .and_call_original
 
       Cheep.to_patch
+    end
+  end
+
+
+
+  describe '#add_objects' do
+    before(:each) { reset_patch }
+
+    it 'Adds the objects' do
+      Cheep.osc! 123
+      Cheep['*~']
+      Cheep.dac!
+      patch = Cheep.class_eval 'add_objects []'
+
+      patch_patterns = [
+        /#X obj \d+ \d+ osc~ 123;/,
+        /#X obj \d+ \d+ \*~;/,
+        /#X obj \d+ \d+ dac~;/
+      ]
+
+      test_patch patch.join("\n"), patch_patterns
     end
   end
 end

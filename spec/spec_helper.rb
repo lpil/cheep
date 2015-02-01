@@ -10,8 +10,10 @@ end
 
 def test_patch(patch, patch_patterns)
   lines = patch.split "\n"
+  count = patch_patterns.size
 
-  expect(lines.size).to eq(patch_patterns.size)
+  expect(lines.size).to eq(count),
+                        "#{lines.inspect} expected to be #{count} in size"
 
   lines.zip(patch_patterns).each do |line, pattern|
     expect(line).to match(/\A#{pattern}\z/)
