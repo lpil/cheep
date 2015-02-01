@@ -19,18 +19,13 @@ class Cheep::Connector
 
   def connections_for_object(obj)
     patch = []
-    obj.ins.each.with_index do |senders, sender_input|
-
-      senders = [senders] unless senders.class == Array
-
-      senders.each do |sender|
-        patch << connection(sender.num, obj.num, sender_input)
-      end
+    obj.each_upstream_object do |sender, reciever_input|
+      patch << connection(sender.num, obj.num, reciever_input)
     end
     patch
   end
 
-  def connection(sender_num, reciever_num, sender_input)
-    "#X connect #{sender_num} 0 #{reciever_num} #{sender_input};"
+  def connection(sender_num, reciever_num, reciever_input)
+    "#X connect #{sender_num} 0 #{reciever_num} #{reciever_input};"
   end
 end
