@@ -22,4 +22,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec', '~>3.1'
   gem.add_development_dependency 'rubocop', '~> 0.28'
   gem.add_development_dependency 'pry', '~> 0.10'
+  gem.add_development_dependency 'flog'
+  gem.add_development_dependency 'flay'
+  gem.add_development_dependency 'reek'
 end
