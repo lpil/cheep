@@ -1,5 +1,8 @@
 # Cheep
 
+[![Build Status](https://travis-ci.org/lpil/cheep.svg?branch=master)](https://travis-ci.org/lpil/cheep)
+[![Code Climate](https://codeclimate.com/github/lpil/cheep/badges/gpa.svg)](https://codeclimate.com/github/lpil/cheep)
+
 Graphical programming isn't fun, so here's a Ruby DSL for writing
 [Pure Data](http://puredata.info/) patches.
 
