@@ -2,3 +2,4 @@
 *.wav
 *.pd
 !resource/*.pd
+tags
